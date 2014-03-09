@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Call Back Documentation</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;Call Back&rdquo; Documentation by &ldquo;PHPgear&rdquo; v1.0</h3>
+		<hr>
+		
+		<h1 class="center">&ldquo;Call Back v1.0&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 07/10/2013<br>
+					By: PHPgear<br>
+					Email: <a href="http://themeforest.net/user/phpgear">Contact me</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing my theme. If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form <a href="http://themeforest.net/user/phpgear">here</a>. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		<hr>
+		
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol>
+			<li><a href="#installGuide">Installation Guide</a></li>
+			<li><a href="#configGuide">Configuration Guide</a></li>
+			<li><a href="#usageGuide">Usage Guide</a></li>
+			<ol class="alpha">
+				<li><a href="#existingPages">Adding to existing pages</a></li>
+				<li><a href="#demo">Using the demo page</a></li>
+				<li><a href="#email">E-mail template</a></li>
+				<li><a href="#csrf">CSRF</a></li>
+				<li><a href="#captcha">Captcha</a></li>
+				<li><a href="#bot">Bot filter</a></li>
+				<li><a href="#responses">Customise the responses</a></li>
+				<li><a href="#fields">Add/remove fields</a></li>
+			</ol>
+			<li><a href="#credits">Sources and Credits</a></li>
+			<li><a href="#features">Features</a></li>
+		</ol>
+		<hr>
+		
+		<h3 id="installGuide"><strong>1) Installation Guide</strong> - <a href="#toc">top</a></h3>
+		<ul>
+			<li>Open the config.php file found in upload/callback</li>
+			<li>Change the first three settings (subject, from and recipients). These are the core settings, everything else works out of the box but is explained in the configuration guide further down the page.</li>
+			<li>Upload all folders in the upload folder to your web host using FTP or cPanel.</li>
+			<li>Visit the demo/index.php file in your web browser to test the form. E.g. www.mywebsite.com/scripts/demo/index.php</li>
+		</ul>
+		<hr>
+
+		<h3 id="configGuide"><strong>2) Configuration Guide</strong> - <a href="#toc">top</a></h3>
+		<p>The Call Back config file makes it very easy to customise the script to work how you want it. There are a few things that you may need to be aware of when changing each settings.</p>
+		<p>You can only edit values inbetween double quotes ("example").</p>
+		<p>Each value must end with a comma (example,).</p>
+		<p>Removing or changing other parts of the file such as changing values surrounded in single quotes or remove other characters (=>) can cause errors.</p>
+		<p>The following will guide you through each configuration setting and explain how you can change it...</p>
+		<hr>
+
+		<h3 id="usageGuide"><strong>3) Usage Guide</strong> - <a href="#toc">top</a></h3>
+
+		<h3 id="existingPages"><strong>A) Adding to existing pages</strong> - <a href="#toc">top</a></h3>
+		<p>How to add a form to HTML and PHP pages.</p>
+		<hr>
+
+		<h3 id="demo"><strong>B) Using the demo page</strong> - <a href="#toc">top</a></h3>
+		<p>How can the demo page be implemented into their current site.</p>
+		<hr>
+
+		<h3 id="email"><strong>C) E-mail template</strong> - <a href="#toc">top</a></h3>
+		<p>How to use the e-mail template</p>
+		<hr>
+
+		<h3 id="csrf"><strong>D) CSRF</strong> - <a href="#toc">top</a></h3>
+		<p>Explain what csrf is and how to apply it</p>
+		<hr>
+
+		<h3 id="captcha"><strong>E) Captcha</strong> - <a href="#toc">top</a></h3>
+		<p>Talk about the captcha script</p>
+		<hr>
+
+		<h3 id="bot"><strong>F) Bot filter</strong> - <a href="#toc">top</a></h3>
+		<p>A bit more detail on what this is an how it helps.</p>
+		<hr>
+
+		<h3 id="responses"><strong>G) Customise the responses</strong> - <a href="#toc">top</a></h3>
+		<p>Mention that this allows for different languages as all responses are customizable (except swift at the moment).</p>
+		<hr>
+
+		<h3 id="fields"><strong>H) Add/remove fields</strong> - <a href="#toc">top</a></h3>
+		<p>How to remove fields or even add their own, which settings need to be changed in the config.</p>
+		<hr>
+
+		<h3 id="credits"><strong>4) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+
+		<p>Credits here</p>
+		<hr>
+
+		<h3 id="features"><strong>5) Features</strong> - <a href="#toc">top</a></h3>
+		<hr>
+		
+		<hr>
+		
+		<p>Once again, thank you so much for purchasing this script. etc etc etc</p>
+		
+		<p class="append-bottom alt large"><strong>PHPgear</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+</html>
