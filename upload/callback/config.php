@@ -22,7 +22,7 @@ return array(
 	|
 	*/
 
-	'from' => "callbackform@phpgear.net",
+	'from' => "callbackform@mywebsite.com",
 
 	/*
 	|--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return array(
 	*/
 
 	'recipients' => array(
-		"robbeh84@gmail.com",
+		"myemailaddress@mywebsite.com",
 	),
 
 	/*
@@ -110,7 +110,7 @@ return array(
 	|--------------------------------------------------------------------------
 	| Captcha for humans
 	|--------------------------------------------------------------------------
-	| A basic easy to read captcha that displays an easy to understand challenge.
+	| A easy to read captcha that displays an easy to understand challenge.
 	|
 	| Example:
 	| What is the sum of 3 and 5?

@@ -26,7 +26,7 @@
 			<div class="span-6 colborder info prepend-1">
 				<p class="prepend-top">
 					<strong>
-					Created: 07/10/2013<br>
+					Created: 24/8/2014<br>
 					By: PHPgear<br>
 					Email: <a href="http://themeforest.net/user/phpgear">Contact me</a>
 					</strong>
@@ -51,11 +51,11 @@
 				<li><a href="#csrf">CSRF</a></li>
 				<li><a href="#captcha">Captcha</a></li>
 				<li><a href="#bot">Bot filter</a></li>
+                <li><a href="#smtp">SMTP settings</a></li>
 				<li><a href="#responses">Customise the responses</a></li>
 				<li><a href="#fields">Add/remove fields</a></li>
 			</ol>
 			<li><a href="#credits">Sources and Credits</a></li>
-			<li><a href="#features">Features</a></li>
 		</ol>
 		<hr>
 		
@@ -113,7 +113,7 @@
             look...
 
             <div class="info">
-                &nbsp; &lt;form name="" id="callback_form" class="form-horizontal" role="form" action="path to the callback folder" method="post"&gt;<br /><br />
+                &nbsp; &lt;form name="" id="callback_form" class="form-horizontal" role="form" action="path to the call back folder" method="post"&gt;<br /><br />
 
                 &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
                 &nbsp;&nbsp;&nbsp;&lt;label for="inputName" class="col-lg-2 control-label"&gt;Name&lt;/label&gt;<br />
@@ -166,7 +166,7 @@
         </p>
         <p>
 
-        Notice the form action in the opening form tag? you will need to point that to the callback folder (upload/callback).<br />
+        Notice the form action in the opening form tag? you will need to point that to the call back folder (upload/callback).<br />
         Don't worry if you are not to sure on the various fields and things like bot protection, they will be discussed later on.<br /><br />
 
         Step three: There is just one more line of code needed to get the form in working order, the javascript file (callback.ajax.js). This can be found in the demo/js folder.
@@ -215,7 +215,7 @@
             Step three: Time to add the form, the following form differs from the PHP form because we will not be including the two disabled features. Add the following
             code near the step two feedback messages (I recommend directly below)...
         <div class="info">
-            &nbsp; &lt;form name="" id="callback_form" class="form-horizontal" role="form" action="path to the callback folder" method="post"&gt;<br /><br />
+            &nbsp; &lt;form name="" id="callback_form" class="form-horizontal" role="form" action="path to the call back folder" method="post"&gt;<br /><br />
 
             &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
             &nbsp;&nbsp;&nbsp;&lt;label for="inputName" class="col-lg-2 control-label"&gt;Name&lt;/label&gt;<br />
@@ -278,7 +278,7 @@
             &lt;script src="js/jquery-1.10.2.min.js"&gt;&lt;/script&gt;
         </div>
         <br />
-        3. Lastly, you will need to make sure your form's action is pointing to the callback folder. This simply tells the form where the content should be sent for processing.
+        3. Lastly, you will need to make sure your form's action is pointing to the call back folder. This simply tells the form where the content should be sent for processing.
         <br /><br />
         <div class="info">
             &lt;form action="path/to/callback"
@@ -288,8 +288,8 @@
 		<hr>
 
 		<h3 id="email"><strong>C) E-mail template</strong> - <a href="#toc">top</a></h3>
-		<p>In the callback folder you will find the file named <strong>email_template.php</strong>.
-            Within this file contains the e-mail you will receive once a callback form has been sent.
+		<p>In the call back folder you will find the file named <strong>email_template.php</strong>.
+            Within this file contains the e-mail you will receive once a call back form has been sent.
         </p>
         <p>
             Changing this file to suit your needs it relatively straight forward. The file supports plain HTML and the three useful tags are:<br />
@@ -313,19 +313,92 @@
 		<hr>
 
 		<h3 id="captcha"><strong>E) Captcha</strong> - <a href="#toc">top</a></h3>
-		<p>Talk about the captcha script</p>
+		<p>
+            The captcha feature is on by default. This displays an easy to understand challenge used to help distinguish a genuine user of the form against an auto submission tool.
+            Call back captcha will ask the user to complete an easy sum such as "what is 2+2?". <br />
+            If you would like to turn this off then switch the captcha config to "off".
+            <div class="info">
+                'enable_captcha' => "off",
+            </div>
+        </p>
+
 		<hr>
 
 		<h3 id="bot"><strong>F) Bot filter</strong> - <a href="#toc">top</a></h3>
-		<p>A bit more detail on what this is an how it helps.</p>
+		<p>One way to help prevent auto form submissions from bots it to have a
+            hidden input field. If this field gets filled in by anybody then call back
+            will not send the e-mail.
+            </p>
+        <p>The advantage to this is that the form is hidden from humans but not from bots. This feature is also switched on by default but if you would
+        like to turn it off then you can do so in the config by switching enable_bot_protection to "off".
+        <div class="info">
+            'enable_bot_protection' => "off",
+        </div>
+        </p>
 		<hr>
 
-		<h3 id="responses"><strong>G) Customise the responses</strong> - <a href="#toc">top</a></h3>
-		<p>Mention that this allows for different languages as all responses are customizable (except swift at the moment).</p>
+        <h3 id="smtp"><strong>G) SMTP settings</strong> - <a href="#toc">top</a></h3>
+        <p>You can use SMTP to transport your call back e-mails. By default these values are empty which means that your servers default
+        PHP mail method of transport will be used.</p>
+
+        <p>
+            One of the advantages to using SMTP is that you can increase the likely hood of the e-mail being send to your inbox and not marked as
+            junk. For example, if you have a gmail account you can leverage the gmail SMTP service by setting the following values:
+
+        <div class="info">
+            'smtp_username' => "youremailaddress@gmail.com",<br />
+            'smtp_password' => "yourgmailpassword",<br />
+            'smtp_port' 	=> "465",<br />
+            'smtp_host' 	=> "ssl://smtp.gmail.com",<br />
+        </div>
+        </p>
+        <hr>
+
+		<h3 id="responses"><strong>H) Customise the responses</strong> - <a href="#toc">top</a></h3>
+		<p>Whilst the default response messages in call back have been desgined to be as informative and simple as possible, you may want
+        to write your own or even change the language.</p>
+        <p>You can do so by changing the response messages located right at the bottom of the config file. If the message relates to a specific field then you can use
+        the <strong>{field}</strong> tag and the name of the field will be output in the message.</p>
 		<hr>
 
-		<h3 id="fields"><strong>H) Add/remove fields</strong> - <a href="#toc">top</a></h3>
-		<p>How to remove fields or even add their own, which settings need to be changed in the config.</p>
+		<h3 id="fields"><strong>I) Add/remove fields</strong> - <a href="#toc">top</a></h3>
+		<p>Call Back supports the ability to remove or even add your own fields.</p>
+        <p>When you have removed a field from the form page, for example, lets say we want to remove the name input. Removing just the
+        input HTML code will not be enough because Call Back will detect a missing field and return an error. In the config file you will also
+        need to remove the relevant field key and its value, so in this case of removing the name field we will want to change:
+        <div class="info">
+            'fields' => array(<br />
+           &nbsp;&nbsp; "name" 				=> "required|min_length[2]|max_length[20]|letters_only|xss_clean",<br />
+            &nbsp;&nbsp; "number" 			=> "required|min_length[10]|max_length[13]|numbers_only|xss_clean",<br />
+            &nbsp;&nbsp;"time" 				=> "required|min_length[5]|max_length[7]|xss_clean",<br />
+            ),
+        </div>
+        to:
+        <div class="info">
+            'fields' => array(<br />
+            &nbsp;&nbsp;"number" 			=> "required|min_length[10]|max_length[13]|numbers_only|xss_clean",<br />
+            &nbsp;&nbsp;"time" 				=> "required|min_length[5]|max_length[7]|xss_clean",<br />
+            ),
+        </div>
+        </p>
+        <p>
+            But, what if we want to add a completely new field? Well, this is just as easy. When you have added the new field to your HTML form,
+            you will need to add the new field to the config. So, for this example, we have added a new field called "age" to accept the
+            users age. In the config file add the "age" key along with its validation values to the fields container. (Note that because this
+        is an age field, I have included <strong>numbers_only</strong> to the validation settings).
+
+        <div class="info">
+            'fields' => array(<br />
+            &nbsp;&nbsp;"number" 			=> "required|min_length[10]|max_length[13]|numbers_only|xss_clean",<br />
+            &nbsp;&nbsp;"time" 				=> "required|min_length[5]|max_length[7]|xss_clean",<br />
+            &nbsp;&nbsp;"age" 			=> "required|min_length[1]|max_length[3]|numbers_only|xss_clean",<br />
+            ),
+        </div>
+        </p>
+        <p>
+        Lastly, this field will need to be added to your email_template file so that you will be able to read it. In this case, simply
+            add an <strong>{age}</strong> tag to the template.
+        </p>
 		<hr>
 
 		<h3 id="credits"><strong>4) Sources and Credits</strong> - <a href="#toc">top</a></h3>
@@ -333,8 +406,6 @@
 		<p>Credits here</p>
 		<hr>
 
-		<h3 id="features"><strong>5) Features</strong> - <a href="#toc">top</a></h3>
-		<hr>
 		
 		<hr>
 		
