@@ -288,11 +288,28 @@
 		<hr>
 
 		<h3 id="email"><strong>C) E-mail template</strong> - <a href="#toc">top</a></h3>
-		<p>How to use the e-mail template</p>
+		<p>In the callback folder you will find the file named <strong>email_template.php</strong>.
+            Within this file contains the e-mail you will receive once a callback form has been sent.
+        </p>
+        <p>
+            Changing this file to suit your needs it relatively straight forward. The file supports plain HTML and the three useful tags are:<br />
+            <ol>
+                <li><strong>{name}</strong> - The value from the name input field.</li>
+                <li><strong>{number}</strong> - The value from the number input field.</li>
+                <li><strong>{time}</strong> - The value from the time input field.</li>
+            </ol>
+        It is advised that you keep the small PHP code at the top of this file so that this file cannot be accessed directly.
+        </p>
 		<hr>
 
 		<h3 id="csrf"><strong>D) CSRF</strong> - <a href="#toc">top</a></h3>
-		<p>Explain what csrf is and how to apply it</p>
+		<p>Protect your form from being used by external sources. This will generate a unique token that only your server knows about. Once posted, if the token posted matches the server token then we know the form has been sent from your server and nobody else's.</p>
+        <p>CSRF protection is swiched on by default. If for any reason you would like to turn it off then simply change the config option to off.
+        <div class="info">
+            'enable_csrf' => "off",
+        </div>
+        </p>
+
 		<hr>
 
 		<h3 id="captcha"><strong>E) Captcha</strong> - <a href="#toc">top</a></h3>
