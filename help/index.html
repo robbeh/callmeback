@@ -68,22 +68,223 @@
 		</ul>
 		<hr>
 
-		<h3 id="configGuide"><strong>2) Configuration Guide</strong> - <a href="#toc">top</a></h3>
+		<h3 id="configGuide"><strong>2) Configuration Guide (callback/config.php)</strong> - <a href="#toc">top</a></h3>
 		<p>The Call Back config file makes it very easy to customise the script to work how you want it. There are a few things that you may need to be aware of when changing each settings.</p>
-		<p>You can only edit values inbetween double quotes ("example").</p>
-		<p>Each value must end with a comma (example,).</p>
+		<p>You can only edit values inbetween double quotes ('enable_csrf' => "only change this").</p>
+		<p>Each value must end with a comma ('csrf_field_name' => "csrf",).</p>
 		<p>Removing or changing other parts of the file such as changing values surrounded in single quotes or remove other characters (=>) can cause errors.</p>
-		<p>The following will guide you through each configuration setting and explain how you can change it...</p>
 		<hr>
 
 		<h3 id="usageGuide"><strong>3) Usage Guide</strong> - <a href="#toc">top</a></h3>
 
 		<h3 id="existingPages"><strong>A) Adding to existing pages</strong> - <a href="#toc">top</a></h3>
-		<p>How to add a form to HTML and PHP pages.</p>
+        <p>
+            Please note that this guide assumes you will be using twitter boostrap css for your styling. It is definitely not a requirement but all examples use
+            class names that refer to the boostrap.css and jumbotron-narrow.css files found in the demo/css folder.
+            <br />
+            The following section will walk you through installing Call Back into you existing page(s). The code used is taken from demo/index.php for the PHP section
+            and demo/demo2.html for the HTML section. If you feel confident enough to just read and use the code from the demo files then this section can probably be skipped.
+        </p>
+		<p><strong>Is your page a PHP file? (.php)</strong>
+        <br />
+        Why PHP over HTML? Well, to make use of all of Call Back's features you will need to implement the form into a PHP file. Features such such as the CSRF protection
+            and the captcha question will not run in .html files.
+        </p>
+        <p>
+        Step one: To begin with we will need somewhere to give the user some feedback. When the form submit button is clicked, the javascript file included will handle
+        any error or success messages sent back. Using the following HTML tags the javascript will know exactly where to put these messages on the page...
+        <br />
+            <div class="info">
+                &nbsp; &lt;div id="success" class="alert alert-success"&gt; &lt;/div&gt;
+                <br />
+
+                &nbsp;  &lt;div id="error" class="alert alert-danger"&gt;
+                <br />
+                &nbsp; &nbsp; &lt;p&gt;The following errors occurred&lt;/p&gt;
+                <br />
+                &nbsp; &nbsp; &lt;ul class="error_list" &gt;&lt;/ul&gt;
+                <br />
+                &nbsp; &lt;/div&gt;
+            </div>
+
+        </p>
+        <p>
+           Step two: Now that the feedback section is done, lets add the form itself. I recommend using the following code just after your feedback messages to give a cleaner
+            look...
+
+            <div class="info">
+                &nbsp; &lt;form name="" id="callback_form" class="form-horizontal" role="form" action="path to the callback folder" method="post"&gt;<br /><br />
+
+                &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;label for="inputName" class="col-lg-2 control-label"&gt;Name&lt;/label&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;div class="col-lg-10"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" class="form-control" name="name" id="name" placeholder="Your Name"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+                &nbsp;&nbsp;&lt;/div&gt;<br /><br />
+
+                &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;label for="inputNumber" class="col-lg-2 control-label"&gt;Number&lt;/label&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;div class="col-lg-10"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" class="form-control" name="number" id="number" placeholder="Phone Number"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+                &nbsp;&nbsp;&lt;/div&gt;<br /><br />
+
+                &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;label for="inputTime" class="col-lg-2 control-label"&gt;Time&lt;/label&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;div class="col-lg-10"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" class="form-control" name="time" id="time" placeholder="Call me back at"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+                &nbsp;&nbsp;&lt;/div&gt;<br /><br />
+
+                &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;label for="inputCaptcha" class="col-lg-2 control-label"&gt;&lt;/label&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;div class="col-lg-9"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Display human readable captcha --&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="text-muted"&gt;&lt;?php print Callback_Security::generateCaptchaQuestion(); ?&gt;&lt;/span&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-lg-3"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" class="form-control" id="inputCaptcha" placeholder="Answer" name="captcha" value="" /&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+
+                &nbsp;&nbsp;&nbsp;&lt;!-- Hidden bot protection field --&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;input type="text" name="bot" id="bot" style="display: none;"  /&gt;<br />
+
+                &nbsp;&nbsp;&nbsp;&lt;!-- Hidden CSRF field to prevent external usage --&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;input type="hidden" name="csrf" value="&lt;?php print Callback_Security::generateCsrf(); ?&gt;" /&gt;<br />
+                &nbsp;&nbsp;&lt;/div&gt;<br /><br />
+
+                &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;div class="col-lg-offset-2 col-lg-10"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="submit" id="submit" class="btn btn-default"&gt;Submit&lt;/button&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+                &nbsp;&nbsp;&lt;/div&gt;<br /><br />
+
+                &nbsp;&lt;/form&gt;<br />
+            </div>
+
+
+        </p>
+        <p>
+
+        Notice the form action in the opening form tag? you will need to point that to the callback folder (upload/callback).<br />
+        Don't worry if you are not to sure on the various fields and things like bot protection, they will be discussed later on.<br /><br />
+
+        Step three: There is just one more line of code needed to get the form in working order, the javascript file (callback.ajax.js). This can be found in the demo/js folder.
+        Adding the following line just above your closing body tag will allow this javascript file to handle the forms submission...
+        <div class="info">
+            &lt;script src="js/callback.ajax.js"&gt;&lt;/script&gt;
+        </div>
+       <br /><br />
+        It is worth noting that this javascript file relies on your form id being named "callback_form" and the feedback error &amp; success message divs having class
+            names of alert-danger and .alert-success. If you would like these to be named differently then please update their respective names in the javascript file.
+        </p>
+
+
+
+        <p><strong>Is your page a HTML file? (.html)</strong>
+            <br />
+            Call Back supports plain html files but as previously mentioned, you will miss out on some of it's awesome features.
+        </p>
+        <p>
+            Step one: The HTML method will work very similar to the PHP method but you will not be able to use the inbuilt captcha and CSRF protection. So, firstly
+            you will need to open up the callback/config.php file and turn these off. You can do so by making sure both values are set to "off" like in the example below...
+            <br />
+        <div class="info">
+            'enable_csrf' => "off",
+            <br />
+            'enable_captcha' => "off",
+        </div>
+        </p>
+        <p>
+            Step two: The rest of this section is almost identical to the steps found in the PHP version so firstly, open up your .html file and add somewhere
+            for the forms feedback messages to appear...
+        <div class="info">
+            &nbsp; &lt;div id="success" class="alert alert-success"&gt; &lt;/div&gt;
+            <br />
+
+            &nbsp;  &lt;div id="error" class="alert alert-danger"&gt;
+            <br />
+            &nbsp; &nbsp; &lt;p&gt;The following errors occurred&lt;/p&gt;
+            <br />
+            &nbsp; &nbsp; &lt;ul class="error_list" &gt;&lt;/ul&gt;
+            <br />
+            &nbsp; &lt;/div&gt;
+        </div>
+        </p>
+        <p>
+            Step three: Time to add the form, the following form differs from the PHP form because we will not be including the two disabled features. Add the following
+            code near the step two feedback messages (I recommend directly below)...
+        <div class="info">
+            &nbsp; &lt;form name="" id="callback_form" class="form-horizontal" role="form" action="path to the callback folder" method="post"&gt;<br /><br />
+
+            &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&lt;label for="inputName" class="col-lg-2 control-label"&gt;Name&lt;/label&gt;<br />
+            &nbsp;&nbsp;&nbsp;&lt;div class="col-lg-10"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" class="form-control" name="name" id="name" placeholder="Your Name"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+            &nbsp;&nbsp;&lt;/div&gt;<br /><br />
+
+            &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&lt;label for="inputNumber" class="col-lg-2 control-label"&gt;Number&lt;/label&gt;<br />
+            &nbsp;&nbsp;&nbsp;&lt;div class="col-lg-10"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" class="form-control" name="number" id="number" placeholder="Phone Number"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+            &nbsp;&nbsp;&lt;/div&gt;<br /><br />
+
+            &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&lt;label for="inputTime" class="col-lg-2 control-label"&gt;Time&lt;/label&gt;<br />
+            &nbsp;&nbsp;&nbsp;&lt;div class="col-lg-10"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" class="form-control" name="time" id="time" placeholder="Call me back at"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+            &nbsp;&nbsp;&lt;/div&gt;<br /><br />
+
+            &nbsp;&nbsp;&lt;!-- Hidden bot protection field --&gt;<br />
+            &nbsp;&nbsp;&lt;input type="text" name="bot" id="bot" style="display: none;"  /&gt;<br /><br />
+
+            &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&lt;div class="col-lg-offset-2 col-lg-10"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="submit" id="submit" class="btn btn-default"&gt;Submit&lt;/button&gt;<br />
+            &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+            &nbsp;&nbsp;&lt;/div&gt;<br /><br />
+
+            &nbsp;&lt;/form&gt;<br />
+        </div>
+        </p>
+
+        <p>
+            Step four: There is just one more line of code needed to get the form in working order, the javascript file (callback.ajax.js). This can be found in the demo/js folder.
+            Adding the following line just above your closing body tag will allow this javascript file to handle the forms submission...
+        <div class="info">
+            &lt;script src="js/callback.ajax.js"&gt;&lt;/script&gt;
+        </div>
+        <br />
+        It is worth noting that this javascript file relies on your form id being named "callback_form" and the feedback error &amp; success message divs having class
+        names of alert-danger and .alert-success. If you would like these to be named differently then please update their respective names in the javascript file.
+        </p>
 		<hr>
 
 		<h3 id="demo"><strong>B) Using the demo page</strong> - <a href="#toc">top</a></h3>
-		<p>How can the demo page be implemented into their current site.</p>
+		<p>All three demo files within the demo folder are designed to work out of the box. If you would like to use any one of the demos then it is as simple as adding a hyperlink to the page.
+        If you would like to use a demo page but move it into a new folder structure then there are only a small number of things you need to take into consideration.</p>
+        <p>
+            1. The css used for the demo pages is contained within the css folder so make sure you update the style rel tag inside the demo files html.
+        <div class="info">
+            &lt;link href="css/jumbotron-narrow.css" rel="stylesheet"&gt;
+        </div>
+        <br />
+            2. The javascript used can be found in the js folder. Just make sure you update the path to each script tag and the javascript will continue to function correctly.
+        <br /><br />
+        <div class="info">
+            &lt;script src="js/jquery-1.10.2.min.js"&gt;&lt;/script&gt;
+        </div>
+        <br />
+        3. Lastly, you will need to make sure your form's action is pointing to the callback folder. This simply tells the form where the content should be sent for processing.
+        <br /><br />
+        <div class="info">
+            &lt;form action="path/to/callback"
+        </div>
+
+        </p>
 		<hr>
 
 		<h3 id="email"><strong>C) E-mail template</strong> - <a href="#toc">top</a></h3>

@@ -83,7 +83,7 @@
 		</div>
 
 		<div class="footer">
-			<p>&copy; My website 2013</p>
+			<p>&copy; My website 2014</p>
 		</div>
 	</div>
 
