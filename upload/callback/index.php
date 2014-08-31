@@ -6,9 +6,9 @@
 	require	dirname(__FILE__) . '/inc/Security.php';
 	require	dirname(__FILE__) . '/vendors/swiftmailer/lib/swift_required.php';
 
-	use phpgear\callback\core\Form;
-	use phpgear\callback\core\Email;
-	use phpgear\callback\core\Response;
+	use phpgear\callback\core\Form as CallMeBackForm;
+	use phpgear\callback\core\Email as CallMeBackEmail;
+	use phpgear\callback\core\Response as CallMeBackResponse;
 
 	/** Used to help prevent direct access to some files. **/
 	define('CALLBACK', true);
@@ -17,15 +17,15 @@
 	$configuration = require dirname(__FILE__) . '/config.php';
 
 	/** Check that the form posted is ok **/
-	$form = new Form($configuration);
+	$form = new CallMeBackForm($configuration);
 	$form->validate($_POST);
 
-	if ($form->hasErrors()) Response::json($form->errors);
+	if ($form->hasErrors()) CallMeBackResponse::json($form->errors);
 
 	/** Dispatch e-mail **/
-	$email = new Email($form, $configuration);
+	$email = new CallMeBackEmail($form, $configuration);
 	$email->send();
 
 	if ($email->hasErrors()) Response::json($email->errors);
 
-	Response::json(array('status'=>'success', 'response'=>$configuration['responses']['success']));
+    CallMeBackResponse::json(array('status'=>'success', 'response'=>$configuration['responses']['success']));
