@@ -1,4 +1,4 @@
-<?php if (!defined('CALLBACK')) exit('Forbidden.');
+<?php if (!defined('CALLMEBACK')) exit('Forbidden.');
 
 return array(
 
@@ -22,7 +22,7 @@ return array(
 	|
 	*/
 
-	'from' => "callbackform@mywebsite.com",
+	'from' => "callmebackform@mywebsite.com",
 
 	/*
 	|--------------------------------------------------------------------------
@@ -99,7 +99,7 @@ return array(
 	| The csrf_field is the 'name' of the hidden csrf field in your form.
 	|
 	| Example:
-	| <input type="hidden" name="csrf" value="<?php print Callback_Security::generateCsrf(); ?>" />
+	| <input type="hidden" name="csrf" value="<?php print callmeback_Security::generateCsrf(); ?>" />
 	|
 	*/
 
@@ -118,7 +118,7 @@ return array(
 	| values 'on' or 'off'
 	|
 	| Usage example..
-	| <label for="captcha"><?php print Callback_Security::generateCaptchaQuestion(); ?></label>
+	| <label for="captcha"><?php print Callmeback_Security::generateCaptchaQuestion(); ?></label>
 	| <input type="text" name="captcha" value="" />
 	|
 	*/

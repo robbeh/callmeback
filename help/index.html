@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <head lang="en">
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
-	<title>Call Back Documentation</title>
+	<title>Call Me Back Documentation</title>
 	<!-- Framework CSS -->
 	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
 	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
@@ -17,10 +17,10 @@
 <body>
 	<div class="container">
 	
-		<h3 class="center alt">&ldquo;Call Back&rdquo; Documentation by &ldquo;PHPgear&rdquo; v1.0</h3>
+		<h3 class="center alt">&ldquo;Call Me Back&rdquo; Documentation by &ldquo;PHPgear&rdquo; v1.0</h3>
 		<hr>
 		
-		<h1 class="center">&ldquo;Call Back v1.0&rdquo;</h1>
+		<h1 class="center">&ldquo;Call Me Back v1.0&rdquo;</h1>
 		
 		<div class="borderTop">
 			<div class="span-6 colborder info prepend-1">
@@ -61,15 +61,15 @@
 		
 		<h3 id="installGuide"><strong>1) Installation Guide</strong> - <a href="#toc">top</a></h3>
 		<ul>
-			<li>Open the config.php file found in upload/callback</li>
+			<li>Open the config.php file found in upload/callmeback</li>
 			<li>Change the first three settings (subject, from and recipients). These are the core settings, everything else works out of the box but is explained in the configuration guide further down the page.</li>
 			<li>Upload all folders in the upload folder to your web host using FTP or cPanel.</li>
 			<li>Visit the demo/index.php file in your web browser to test the form. E.g. www.mywebsite.com/scripts/demo/index.php</li>
 		</ul>
 		<hr>
 
-		<h3 id="configGuide"><strong>2) Configuration Guide (callback/config.php)</strong> - <a href="#toc">top</a></h3>
-		<p>The Call Back config file makes it very easy to customise the script to work how you want it. There are a few things that you may need to be aware of when changing each settings.</p>
+		<h3 id="configGuide"><strong>2) Configuration Guide (callmeback/config.php)</strong> - <a href="#toc">top</a></h3>
+		<p>The Call Me Back config file makes it very easy to customise the script to work how you want it. There are a few things that you may need to be aware of when changing each settings.</p>
 		<p>You can only edit values inbetween double quotes ('enable_csrf' => "only change this").</p>
 		<p>Each value must end with a comma ('csrf_field_name' => "csrf",).</p>
 		<p>Removing or changing other parts of the file such as changing values surrounded in single quotes or remove other characters (=>) can cause errors.</p>
@@ -82,12 +82,12 @@
             Please note that this guide assumes you will be using twitter boostrap css for your styling. It is definitely not a requirement but all examples use
             class names that refer to the boostrap.css and jumbotron-narrow.css files found in the demo/css folder.
             <br />
-            The following section will walk you through installing Call Back into you existing page(s). The code used is taken from demo/index.php for the PHP section
+            The following section will walk you through installing Call Me Back into you existing page(s). The code used is taken from demo/index.php for the PHP section
             and demo/demo2.html for the HTML section. If you feel confident enough to just read and use the code from the demo files then this section can probably be skipped.
         </p>
 		<p><strong>Is your page a PHP file? (.php)</strong>
         <br />
-        Why PHP over HTML? Well, to make use of all of Call Back's features you will need to implement the form into a PHP file. Features such such as the CSRF protection
+        Why PHP over HTML? Well, to make use of all of Call Me Back's features you will need to implement the form into a PHP file. Features such such as the CSRF protection
             and the captcha question will not run in .html files.
         </p>
         <p>
@@ -113,7 +113,7 @@
             look...
 
             <div class="info">
-                &nbsp; &lt;form name="" id="callback_form" class="form-horizontal" role="form" action="path to the call back folder" method="post"&gt;<br /><br />
+                &nbsp; &lt;form name="" id="callmeback_form" class="form-horizontal" role="form" action="path to the Call Me Back folder" method="post"&gt;<br /><br />
 
                 &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
                 &nbsp;&nbsp;&nbsp;&lt;label for="inputName" class="col-lg-2 control-label"&gt;Name&lt;/label&gt;<br />
@@ -132,7 +132,7 @@
                 &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
                 &nbsp;&nbsp;&nbsp;&lt;label for="inputTime" class="col-lg-2 control-label"&gt;Time&lt;/label&gt;<br />
                 &nbsp;&nbsp;&nbsp;&lt;div class="col-lg-10"&gt;<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" class="form-control" name="time" id="time" placeholder="Call me back at"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" class="form-control" name="time" id="time" placeholder="Call Me Back at"&gt;<br />
                 &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
                 &nbsp;&nbsp;&lt;/div&gt;<br /><br />
 
@@ -140,7 +140,7 @@
                 &nbsp;&nbsp;&nbsp;&lt;label for="inputCaptcha" class="col-lg-2 control-label"&gt;&lt;/label&gt;<br />
                 &nbsp;&nbsp;&nbsp;&lt;div class="col-lg-9"&gt;<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Display human readable captcha --&gt;<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="text-muted"&gt;&lt;?php print Callback_Security::generateCaptchaQuestion(); ?&gt;&lt;/span&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="text-muted"&gt;&lt;?php print callmeback_Security::generateCaptchaQuestion(); ?&gt;&lt;/span&gt;<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-lg-3"&gt;<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" class="form-control" id="inputCaptcha" placeholder="Answer" name="captcha" value="" /&gt;<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
@@ -150,7 +150,7 @@
                 &nbsp;&nbsp;&nbsp;&lt;input type="text" name="bot" id="bot" style="display: none;"  /&gt;<br />
 
                 &nbsp;&nbsp;&nbsp;&lt;!-- Hidden CSRF field to prevent external usage --&gt;<br />
-                &nbsp;&nbsp;&nbsp;&lt;input type="hidden" name="csrf" value="&lt;?php print Callback_Security::generateCsrf(); ?&gt;" /&gt;<br />
+                &nbsp;&nbsp;&nbsp;&lt;input type="hidden" name="csrf" value="&lt;?php print callmeback_Security::generateCsrf(); ?&gt;" /&gt;<br />
                 &nbsp;&nbsp;&lt;/div&gt;<br /><br />
 
                 &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
@@ -166,16 +166,16 @@
         </p>
         <p>
 
-        Notice the form action in the opening form tag? you will need to point that to the call back folder (upload/callback).<br />
+        Notice the form action in the opening form tag? you will need to point that to the Call Me Back folder (upload/callmeback).<br />
         Don't worry if you are not to sure on the various fields and things like bot protection, they will be discussed later on.<br /><br />
 
-        Step three: There is just one more line of code needed to get the form in working order, the javascript file (callback.ajax.js). This can be found in the demo/js folder.
+        Step three: There is just one more line of code needed to get the form in working order, the javascript file (callmeback.ajax.js). This can be found in the demo/js folder.
         Adding the following line just above your closing body tag will allow this javascript file to handle the forms submission...
         <div class="info">
-            &lt;script src="js/callback.ajax.js"&gt;&lt;/script&gt;
+            &lt;script src="js/callmeback.ajax.js"&gt;&lt;/script&gt;
         </div>
        <br /><br />
-        It is worth noting that this javascript file relies on your form id being named "callback_form" and the feedback error &amp; success message divs having class
+        It is worth noting that this javascript file relies on your form id being named "callmeback_form" and the feedback error &amp; success message divs having class
             names of alert-danger and .alert-success. If you would like these to be named differently then please update their respective names in the javascript file.
         </p>
 
@@ -183,11 +183,11 @@
 
         <p><strong>Is your page a HTML file? (.html)</strong>
             <br />
-            Call Back supports plain html files but as previously mentioned, you will miss out on some of it's awesome features.
+            Call Me Back supports plain html files but as previously mentioned, you will miss out on some of it's awesome features.
         </p>
         <p>
             Step one: The HTML method will work very similar to the PHP method but you will not be able to use the inbuilt captcha and CSRF protection. So, firstly
-            you will need to open up the callback/config.php file and turn these off. You can do so by making sure both values are set to "off" like in the example below...
+            you will need to open up the callmeback/config.php file and turn these off. You can do so by making sure both values are set to "off" like in the example below...
             <br />
         <div class="info">
             'enable_csrf' => "off",
@@ -215,7 +215,7 @@
             Step three: Time to add the form, the following form differs from the PHP form because we will not be including the two disabled features. Add the following
             code near the step two feedback messages (I recommend directly below)...
         <div class="info">
-            &nbsp; &lt;form name="" id="callback_form" class="form-horizontal" role="form" action="path to the call back folder" method="post"&gt;<br /><br />
+            &nbsp; &lt;form name="" id="callmeback_form" class="form-horizontal" role="form" action="path to the Call Me Back folder" method="post"&gt;<br /><br />
 
             &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
             &nbsp;&nbsp;&nbsp;&lt;label for="inputName" class="col-lg-2 control-label"&gt;Name&lt;/label&gt;<br />
@@ -234,7 +234,7 @@
             &nbsp;&nbsp;&lt;div class="form-group"&gt;<br />
             &nbsp;&nbsp;&nbsp;&lt;label for="inputTime" class="col-lg-2 control-label"&gt;Time&lt;/label&gt;<br />
             &nbsp;&nbsp;&nbsp;&lt;div class="col-lg-10"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" class="form-control" name="time" id="time" placeholder="Call me back at"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" class="form-control" name="time" id="time" placeholder="Call Me Back at"&gt;<br />
             &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
             &nbsp;&nbsp;&lt;/div&gt;<br /><br />
 
@@ -252,13 +252,13 @@
         </p>
 
         <p>
-            Step four: There is just one more line of code needed to get the form in working order, the javascript file (callback.ajax.js). This can be found in the demo/js folder.
+            Step four: There is just one more line of code needed to get the form in working order, the javascript file (callmeback.ajax.js). This can be found in the demo/js folder.
             Adding the following line just above your closing body tag will allow this javascript file to handle the forms submission...
         <div class="info">
-            &lt;script src="js/callback.ajax.js"&gt;&lt;/script&gt;
+            &lt;script src="js/callmeback.ajax.js"&gt;&lt;/script&gt;
         </div>
         <br />
-        It is worth noting that this javascript file relies on your form id being named "callback_form" and the feedback error &amp; success message divs having class
+        It is worth noting that this javascript file relies on your form id being named "callmeback_form" and the feedback error &amp; success message divs having class
         names of alert-danger and .alert-success. If you would like these to be named differently then please update their respective names in the javascript file.
         </p>
 		<hr>
@@ -278,18 +278,18 @@
             &lt;script src="js/jquery-1.10.2.min.js"&gt;&lt;/script&gt;
         </div>
         <br />
-        3. Lastly, you will need to make sure your form's action is pointing to the call back folder. This simply tells the form where the content should be sent for processing.
+        3. Lastly, you will need to make sure your form's action is pointing to the Call Me Back folder. This simply tells the form where the content should be sent for processing.
         <br /><br />
         <div class="info">
-            &lt;form action="path/to/callback"
+            &lt;form action="path/to/callmeback"
         </div>
 
         </p>
 		<hr>
 
 		<h3 id="email"><strong>C) E-mail template</strong> - <a href="#toc">top</a></h3>
-		<p>In the call back folder you will find the file named <strong>email_template.php</strong>.
-            Within this file contains the e-mail you will receive once a call back form has been sent.
+		<p>In the Call Me Back folder you will find the file named <strong>email_template.php</strong>.
+            Within this file contains the e-mail you will receive once a Call Me Back form has been sent.
         </p>
         <p>
             Changing this file to suit your needs it relatively straight forward. The file supports plain HTML and the three useful tags are:<br />
@@ -315,7 +315,7 @@
 		<h3 id="captcha"><strong>E) Captcha</strong> - <a href="#toc">top</a></h3>
 		<p>
             The captcha feature is on by default. This displays an easy to understand challenge used to help distinguish a genuine user of the form against an auto submission tool.
-            Call back captcha will ask the user to complete an easy sum such as "what is 2+2?". <br />
+            Call Me Back captcha will ask the user to complete an easy sum such as "what is 2+2?". <br />
             If you would like to turn this off then switch the captcha config to "off".
             <div class="info">
                 'enable_captcha' => "off",
@@ -326,7 +326,7 @@
 
 		<h3 id="bot"><strong>F) Bot filter</strong> - <a href="#toc">top</a></h3>
 		<p>One way to help prevent auto form submissions from bots it to have a
-            hidden input field. If this field gets filled in by anybody then call back
+            hidden input field. If this field gets filled in by anybody then Call Me Back
             will not send the e-mail.
             </p>
         <p>The advantage to this is that the form is hidden from humans but not from bots. This feature is also switched on by default but if you would
@@ -338,7 +338,7 @@
 		<hr>
 
         <h3 id="smtp"><strong>G) SMTP settings</strong> - <a href="#toc">top</a></h3>
-        <p>You can use SMTP to transport your call back e-mails. By default these values are empty which means that your servers default
+        <p>You can use SMTP to transport your Call Me Back e-mails. By default these values are empty which means that your servers default
         PHP mail method of transport will be used.</p>
 
         <p>
@@ -355,16 +355,16 @@
         <hr>
 
 		<h3 id="responses"><strong>H) Customise the responses</strong> - <a href="#toc">top</a></h3>
-		<p>Whilst the default response messages in call back have been desgined to be as informative and simple as possible, you may want
+		<p>Whilst the default response messages in Call Me Back have been desgined to be as informative and simple as possible, you may want
         to write your own or even change the language.</p>
         <p>You can do so by changing the response messages located right at the bottom of the config file. If the message relates to a specific field then you can use
         the <strong>{field}</strong> tag and the name of the field will be output in the message.</p>
 		<hr>
 
 		<h3 id="fields"><strong>I) Add/remove fields</strong> - <a href="#toc">top</a></h3>
-		<p>Call Back supports the ability to remove or even add your own fields.</p>
+		<p>Call Me Back supports the ability to remove or even add your own fields.</p>
         <p>When you have removed a field from the form page, for example, lets say we want to remove the name input. Removing just the
-        input HTML code will not be enough because Call Back will detect a missing field and return an error. In the config file you will also
+        input HTML code will not be enough because Call Me Back will detect a missing field and return an error. In the config file you will also
         need to remove the relevant field key and its value, so in this case of removing the name field we will want to change:
         <div class="info">
             'fields' => array(<br />

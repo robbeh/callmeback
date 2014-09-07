@@ -7,7 +7,7 @@
  * Class Security
  */
 
-class Callback_Security {
+class Callmeback_Security {
 
 	/**
 	 * Creates a unique md5 hash

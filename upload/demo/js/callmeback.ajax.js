@@ -1,6 +1,6 @@
 jQuery( document ).ready(function( $ ) {
 
-    var form = $('#callback_form');
+    var form = $('#callmeback_form');
 
     $('#submit').removeAttr('disabled');
     $(form).submit(function (e) {

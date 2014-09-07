@@ -6,12 +6,12 @@
 	require	dirname(__FILE__) . '/inc/Security.php';
 	require	dirname(__FILE__) . '/vendors/swiftmailer/lib/swift_required.php';
 
-	use phpgear\callback\core\Form as CallMeBackForm;
-	use phpgear\callback\core\Email as CallMeBackEmail;
-	use phpgear\callback\core\Response as CallMeBackResponse;
+	use phpgear\callmeback\core\Form as CallMeBackForm;
+	use phpgear\callmeback\core\Email as CallMeBackEmail;
+	use phpgear\callmeback\core\Response as CallMeBackResponse;
 
 	/** Used to help prevent direct access to some files. **/
-	define('CALLBACK', true);
+	define('CALLMEBACK', true);
 
 	/** Load the configuration file **/
 	$configuration = require dirname(__FILE__) . '/config.php';

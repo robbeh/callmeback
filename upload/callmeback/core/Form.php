@@ -1,4 +1,4 @@
-<?php namespace phpgear\callback\core;
+<?php namespace phpgear\callmeback\core;
 
 /**
  * Responsible for being the middle man
@@ -8,7 +8,7 @@
  * cleansing on HTTP POST using rules
  * set in the config.php file.
  *
- * @package callback
+ * @package callmeback
  **/
 
 class Form {
@@ -281,7 +281,7 @@ class Form {
 		if (!isset($this->post[$this->config['csrf_field_name']]))
 			throw new \Exception($this->config['responses']['csrf']);
 
-		if (\Callback_Security::getCsrf() !== $this->post[$this->config['csrf_field_name']])
+		if (\Callmeback_Security::getCsrf() !== $this->post[$this->config['csrf_field_name']])
 			throw new \Exception($this->config['responses']['csrf']);
 	}
 
@@ -297,7 +297,7 @@ class Form {
 		if (!isset($this->post[$this->config['captcha_field_name']]))
 			throw new \Exception($this->config['responses']['captcha']);
 
-		if ((int)\Callback_Security::getCaptchaAnswer() !== (int)$this->post[$this->config['captcha_field_name']])
+		if ((int)\Callmeback_Security::getCaptchaAnswer() !== (int)$this->post[$this->config['captcha_field_name']])
 			throw new \Exception($this->config['responses']['captcha']);
 	}
 

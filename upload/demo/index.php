@@ -1,10 +1,10 @@
-<?php require dirname(dirname(__FILE__)) . '/callback/inc/Security.php'; ?>
+<?php require dirname(dirname(__FILE__)) . '/callmeback/inc/Security.php'; ?>
 
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Sample Call Back page</title>
+	<title>Sample Call Me Back page</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="css/bootstrap.css">
@@ -19,7 +19,7 @@
 				<li><a href="demo2.html">HTML Demo</a></li>
 				<li><a href="demo3.php">Plain Form Demo</a></li>
 			</ul>
-			<h3 class="text-muted">Call Back Demo Page</h3>
+			<h3 class="text-muted">Call Me Back Demo Page</h3>
 		</div>
 
 		<div class="jumbotron">
@@ -33,7 +33,7 @@
 			</div>
 
 
-			<form name="" id="callback_form" class="form-horizontal" role="form" action="../callback/" method="post">
+			<form name="" id="callmeback_form" class="form-horizontal" role="form" action="../callmeback/" method="post">
 
 				<div class="form-group">
 					<label for="inputName" class="col-lg-2 control-label">Name</label>
@@ -60,7 +60,7 @@
 					<label for="inputCaptcha" class="col-lg-2 control-label"></label>
 					<div class="col-lg-9">
 						<!-- Display human readable captcha -->
-						<span class="text-muted"><?php print Callback_Security::generateCaptchaQuestion(); ?></span>
+						<span class="text-muted"><?php print Callmeback_Security::generateCaptchaQuestion(); ?></span>
 						<div class="col-lg-3">
 							<input type="text" class="form-control" id="inputCaptcha" placeholder="Answer" name="captcha" value="" />
 						</div>
@@ -70,7 +70,7 @@
 					<input type="text" name="bot" id="bot" style="display: none;"  />
 
 					<!-- Hidden CSRF field to prevent external usage -->
-					<input type="hidden" name="csrf" value="<?php print Callback_Security::generateCsrf(); ?>" />
+					<input type="hidden" name="csrf" value="<?php print Callmeback_Security::generateCsrf(); ?>" />
 				</div>
 
 				<div class="form-group">
@@ -92,6 +92,6 @@
 
 	<script src="js/jquery-1.10.2.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="js/callback.ajax.js"></script>
+	<script src="js/callmeback.ajax.js"></script>
 </body>
 </html>

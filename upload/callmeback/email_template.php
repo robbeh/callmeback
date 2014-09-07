@@ -1,4 +1,4 @@
-<?php if (!defined('CALLBACK')) exit('Forbidden.'); // Leave this here to prevent external access. ?>
+<?php if (!defined('CALLMEBACK')) exit('Forbidden.'); // Leave this here to prevent external access. ?>
 
 Hello,
 <br /><br />

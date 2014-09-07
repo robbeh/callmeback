@@ -1,4 +1,4 @@
-<?php namespace phpgear\callback\core;
+<?php namespace phpgear\callmeback\core;
 
 class Response {
 

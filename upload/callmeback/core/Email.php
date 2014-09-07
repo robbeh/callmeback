@@ -1,4 +1,4 @@
-<?php namespace phpgear\callback\core;
+<?php namespace phpgear\callmeback\core;
 /**
  * A simple class that makes
  * use of the excellent swiftmailer
