@@ -29,7 +29,7 @@ return array(
 	| Recipients
 	|--------------------------------------------------------------------------
 	|
-	| Call back allows you to send the email to multiple addresses. To add
+	| Call me back allows you to send the email to multiple addresses. To add
 	| more simply add each address surrounded by single quotes and end with a
 	| comma. Example..
 	|
@@ -50,12 +50,12 @@ return array(
 	| Form fields and validation
 	|--------------------------------------------------------------------------
 	|
-	| With flexibility in mind, Call Back allows you to add or remove fields
+	| With flexibility in mind, Call Me Back allows you to add or remove fields
 	| to be sent. Not only that, you can specify what kind of validation
 	| each field uses.
 	|
 	| The first value is the name of the field. The second value is the
-	| validation rules Call Back supports which must be separated with a |
+	| validation rules Call Me Back supports which must be separated with a |
 	|
 	| *** Please note ***
 	| If you add more fields then the "name" of the input must match the name
@@ -132,7 +132,7 @@ return array(
 	|--------------------------------------------------------------------------
 	|
 	| One way to help prevent auto form submissions from bots it to have a
-	| hidden input field. If this field gets filled in by anybody then call back
+	| hidden input field. If this field gets filled in by anybody then call me back
 	| will not send the e-mail.
 	|
 	| The advantage to this is that the form is hidden from humans but not from bots.
